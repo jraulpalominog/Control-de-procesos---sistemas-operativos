@@ -1,1 +1,18 @@
 
+PARTE 1: La lógica de programación que utilizamos como grupo.
+
+Variables y Estructuras Globales Estáticas (public static):
+El profesor centraliza los recursos compartidos como atributos estáticos de clase (public static int[][] A, public static boolean Sw1, Sw2...).
+No suele encapsular con getters/setters complejos; prefiere el acceso directo para simular regiones de memoria compartida del SO.
+Indexación basada en 1 (1 .. N):
+Dimensiona matrices y vectores como new int[N+1][N+1] o [M+1][N+1], dejando la posición 0 libre y procesando de 1 a N (for(int i=1; i<=N; i++)).
+Manejo de Multithreading con Clases Anónimas:
+Instanciación directa: new Thread(new Runnable() { public void run() { ... } }).start();.
+Sincronización por Banderas Booleanas ("Switches"):
+En lugar de usar CountDownLatch o semáforos avanzados de Java moderno, el profesor enseña la coordinación de dependencias con flags booleanos (Sw1 = false; ... Sw1 = true;) y bucles de sincronización con retardo:
+java
+do {
+    Thread.sleep(50); // o 100 ms
+} while((Sw1 == false) || (Sw2 == false));
+Métrica de Rendimiento del SO:
+Medición sistemática con long INI = System.currentTimeMillis(); ... long FIN = System.currentTimeMillis(); para comparar la ganancia del procesamiento paralelo frente al serial.
