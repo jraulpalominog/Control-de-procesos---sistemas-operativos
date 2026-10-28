@@ -1,1 +1,1 @@
-# Control-de-procesos---sistemas-operativos
+# Examen-parcial---sistemas-operativos
